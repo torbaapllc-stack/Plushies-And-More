@@ -129,7 +129,7 @@ export async function getProducts(numProducts = 20) {
 }
 
 /**
- * Get a single product by handle
+ * Get a single product by handle okay 
  */
 export async function getProduct(handle) {
   const query = `
