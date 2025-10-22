@@ -7,6 +7,17 @@ const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
 const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
 async function shopifyFetch({ query, variables = {}, useCache = true }) {
+  // Fail fast with helpful errors if env vars are missing (common on fresh deploys)
+  if (!domain) {
+    const hint = `Missing NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN. Set it in your environment (.env.local for local, Vercel Project Settings → Environment Variables for prod). Example: NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=your-store.myshopify.com`;
+    console.error('❌ [SHOPIFY API] Config error:', hint);
+    throw new Error(hint);
+  }
+  if (!storefrontAccessToken) {
+    const hint = `Missing NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN. Set a valid Storefront API token from your Headless App.`;
+    console.error('❌ [SHOPIFY API] Config error:', hint);
+    throw new Error(hint);
+  }
   const endpoint = `https://${domain}/api/2024-10/graphql.json`;
   const startTime = Date.now();
   

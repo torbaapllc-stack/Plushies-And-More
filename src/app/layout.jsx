@@ -27,7 +27,7 @@ const caveatBrush = Caveat_Brush({
 
 export const metadata = {
   title: "Plushies And More | Discover the Cutest Plushies & Adorable Gifts",
-  description: "From kawaii plush toys to cozy socks & baby mats – bring happiness home with our handpicked collections.",
+  description: "From kawaii plush toys to cozy socks & baby mats bring happiness home with our handpicked collections.",
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
